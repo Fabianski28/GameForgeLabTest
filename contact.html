@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gameforgelab est un site sur la création de jeux vidéos">
+    <meta name="author" content="Christopher et Fabien">
+    <meta name="copyright" content="Christopher et Fabien">
+    <meta name="robots" content="index, follow">
+    <title>Gameforgelab - Contact</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.webp" alt="Logo de Gameforgelab" class="logo">
+            <h1 id="Titre-logo">Gameforge<br>Lab</h1>
+        </div>
+    </header>
+    <nav id="main-nav">
+        <ul class="nav-list" >
+            <li><a href="index.html" class="nav-btn">Accueil</a></li>
+            <li><a href="articles.html" class="nav-btn">Articles</a></li>
+            <li><a href="multimedia.html" class="nav-btn">Multimedia</a></li>
+            <li><a href="contact.html" class="nav-btn">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1 id="titre">Contact</h1>
+        <form id="myForm">
+            <label for="username">Nom complet</label>
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom complet" minlength="3">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre email">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Entrez votre message" minlength="10"></textarea>
+            <button type="submit" id="submit" class="envoyer">Envoyer</button>
+            <div id="confirmation" class="hidden">Votre message a bien été envoyé !</div>
+        </form>
+    </main>
+
+        <footer>
+        <p> &copy; Gameforgelab - Tous droits reservés</p>
+    </footer>
+
+    <script>
+                    // Fonction pour valider le formulaire et afficher un message de confirmation
+        const form = document.getElementById("myForm");
+        const confirmation = document.getElementById("confirmation");
+        
+        // Récupération des champs par ID
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("message");
+        
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+        
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+        
+            if (username.length >= 3 && email.length > 0 && message.length >= 10) {
+            confirmation.classList.remove("hidden");
+            confirmation.classList.add("show");
+        
+            form.reset();
+        
+            setTimeout(() => {
+                confirmation.classList.remove("show");
+                confirmation.classList.add("hidden");
+            }, 3000);
+            } else {
+            alert("Veuillez remplir correctement tous les champs.");
+            }
+        });
+    </script>
+</body>
+</html>
